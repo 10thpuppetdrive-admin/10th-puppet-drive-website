@@ -58,6 +58,19 @@
         .box-glow:hover {
             box-shadow: 0 0 35px rgba(244, 63, 94, 0.3);
         }
+        /* Keep the Chaos Alive: PayPal-blue support button */
+        .paypal-chaos-btn {
+            background: linear-gradient(105deg, #123B83 0%, #1768B5 55%, #2499D4 100%);
+            color: #FFFFFF;
+            border: 1px solid rgba(120, 195, 255, .50);
+            box-shadow: 0 7px 22px rgba(23, 104, 181, .22);
+        }
+        .paypal-chaos-btn:hover {
+            transform: translateY(-2px) scale(1.015);
+            box-shadow: 0 10px 28px rgba(36, 153, 212, .34);
+            filter: brightness(1.055);
+        }
+
         /* V2 enhancements: original palette, typography and glow preserved */
         section[id] { scroll-margin-top: 92px; }
         .soft-spotlight { background: radial-gradient(ellipse at 50% 20%, rgba(245,158,11,.085), transparent 57%); }
@@ -225,6 +238,10 @@
         <div class="mt-9 flex flex-wrap items-center justify-center gap-3">
           <a href="https://buymeacoffee.com/10thpuppetdrive" target="_blank" rel="noopener noreferrer" aria-label="Support 10th Puppet Drive on Buy Me a Coffee (opens in a new tab)" class="inline-flex items-center justify-center gap-3 rounded-full border border-amber-400/60 bg-gradient-to-r from-amber-500 to-rose-500 px-7 py-3.5 font-bold text-black shadow-lg shadow-amber-500/15 transition duration-300 hover:-translate-y-0.5 hover:shadow-amber-500/30 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-amber-400">
             <i class="fa-solid fa-mug-hot" aria-hidden="true"></i> Buy Me a Coffee
+            <i class="fa-solid fa-arrow-up-right-from-square text-xs" aria-hidden="true"></i>
+          </a>
+          <a href="https://www.paypal.com/ncp/payment/R5QE4YWH7LQXE" target="_blank" rel="noopener noreferrer" aria-label="Support 10th Puppet Drive directly with PayPal (opens in a new tab)" class="paypal-chaos-btn inline-flex items-center justify-center gap-3 rounded-full px-7 py-3.5 font-bold transition duration-300 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sky-400">
+            <i class="fa-brands fa-paypal" aria-hidden="true"></i> Keep the Chaos Alive! ❤️ with PayPal
             <i class="fa-solid fa-arrow-up-right-from-square text-xs" aria-hidden="true"></i>
           </a>
           <a href="https://www.youtube.com/@10thPuppetDrive" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center gap-2 rounded-full border border-zinc-600 px-7 py-3.5 font-bold text-white transition hover:border-rose-400 hover:bg-white/5 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-rose-400">
