@@ -543,6 +543,13 @@
   "Spam protection": "スパム対策",
   "Studio Chaos": "Studio Chaos"
 };
+
+  // Episode 11 — localized display text; original English headline remains the source.
+  Object.assign(pt, {"Mobi's Happy Dunk… With a Twist! 🏀😄 | Mobi & Torik #puppetcomedy": "A Enterrada Feliz do Mobi… com uma Surpresa! 🏀😄 | Mobi & Torik #puppetcomedy", "Watch the latest Mobi & Torik widescreen film on YouTube!": "Assista ao mais recente filme de Mobi & Torik em tela ampla no YouTube!"});
+  Object.assign(es, {"Mobi's Happy Dunk… With a Twist! 🏀😄 | Mobi & Torik #puppetcomedy": "¡El mate feliz de Mobi… con un giro inesperado! 🏀😄 | Mobi & Torik #puppetcomedy", "Watch the latest Mobi & Torik widescreen film on YouTube!": "¡Mira la última película de Mobi & Torik en pantalla ancha en YouTube!"});
+  Object.assign(fr, {"Mobi's Happy Dunk… With a Twist! 🏀😄 | Mobi & Torik #puppetcomedy": "Le dunk joyeux de Mobi… avec une surprise ! 🏀😄 | Mobi & Torik #puppetcomedy", "Watch the latest Mobi & Torik widescreen film on YouTube!": "Découvrez le dernier film grand écran de Mobi & Torik sur YouTube !"});
+  Object.assign(ko, {"Mobi's Happy Dunk… With a Twist! 🏀😄 | Mobi & Torik #puppetcomedy": "모비의 신나는 덩크… 뜻밖의 반전! 🏀😄 | Mobi & Torik #puppetcomedy", "Watch the latest Mobi & Torik widescreen film on YouTube!": "YouTube에서 모비와 토릭의 최신 와이드스크린 영상을 만나보세요!"});
+  Object.assign(ja, {"Mobi's Happy Dunk… With a Twist! 🏀😄 | Mobi & Torik #puppetcomedy": "モビの楽しいダンク…まさかの展開！ 🏀😄 | Mobi & Torik #puppetcomedy", "Watch the latest Mobi & Torik widescreen film on YouTube!": "モビとトリクの最新ワイドスクリーン作品をYouTubeでご覧ください！"});
   const dictionaries = {'pt-BR':pt, es, fr, ko, ja};
   const original = new WeakMap();
   const originalAttributes = new WeakMap();
