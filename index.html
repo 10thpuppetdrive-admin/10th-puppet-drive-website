@@ -77,6 +77,9 @@
         /* Restore V1's tall poster layout while letting film stills read larger. */
         #episodes .episode-still { transform: scale(1.22); transform-origin: center center; transition: transform .5s ease; }
         #episodes .group:hover .episode-still { transform: scale(1.29); }
+        #episodes [data-film-format="widescreen"] .episode-still { transform:none; object-fit:contain; }
+        #episodes [data-film-format="widescreen"].group:hover .episode-still { transform:scale(1.025); }
+        .tpd-filter-hidden {display:none !important;}
         .character-card { position:relative; overflow:hidden; transition: transform .35s ease, border-color .35s ease, box-shadow .35s ease; }
         .character-card:hover { transform:translateY(-5px); border-color:rgba(245,158,11,.55); box-shadow:0 18px 55px rgba(0,0,0,.28); }
         .character-card.rose:hover { border-color:rgba(244,63,94,.55); }
@@ -354,10 +357,45 @@
                 </p>
             </div>
 
+            <!-- Film format filters (reversible; original film cards retained) -->
+            <div id="tpd-film-filters" class="flex flex-wrap justify-center gap-2 mb-8" role="group" aria-label="Filter films by format">
+                <button type="button" data-film-filter="all" aria-pressed="true" class="tpd-film-filter px-5 py-2.5 rounded-full text-sm font-semibold border border-amber-400 bg-amber-500 text-zinc-950 transition focus-visible:outline focus-visible:outline-2 focus-visible:outline-rose-400">All Films</button>
+                <button type="button" data-film-filter="shorts" aria-pressed="false" class="tpd-film-filter px-5 py-2.5 rounded-full text-sm font-semibold border border-zinc-700 bg-zinc-900 text-zinc-200 hover:border-amber-400 transition focus-visible:outline focus-visible:outline-2 focus-visible:outline-rose-400">Shorts</button>
+                <button type="button" data-film-filter="widescreen" aria-pressed="false" class="tpd-film-filter px-5 py-2.5 rounded-full text-sm font-semibold border border-zinc-700 bg-zinc-900 text-zinc-200 hover:border-amber-400 transition focus-visible:outline focus-visible:outline-2 focus-visible:outline-rose-400">Widescreen</button>
+            </div>
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                 
+                <!-- Video Item: Episode 11 -->
+                <div class="bg-zinc-900 rounded-3xl overflow-hidden border border-zinc-800 box-glow transition duration-300 group flex flex-col" data-film-format="widescreen">
+                    <div class="relative aspect-[9/16] bg-zinc-950 overflow-hidden flex items-center justify-center">
+                        <img src="https://img.youtube.com/vi/0eGWxoCnSSk/hqdefault.jpg" alt="Mobi & Torik — Latest Widescreen Film" class="episode-still w-full h-full object-contain" onerror="this.src='https://placehold.co/480x854/131c2e/f59e0b?text=10th+Puppet+Drive'">
+                        <div class="absolute inset-0 bg-black/40 group-hover:bg-black/20 transition duration-300 flex items-center justify-center">
+                            <button type="button" data-video="0eGWxoCnSSk" aria-label="Play film on this page" class="w-16 h-16 rounded-full bg-gradient-to-r from-amber-500 to-rose-500 flex items-center justify-center text-black text-xl shadow-lg transform scale-90 group-hover:scale-110 transition duration-300">
+                                <i class="fa-solid fa-play ml-1"></i>
+                            </button>
+                        </div>
+                        <span class="absolute top-4 left-4 px-3 py-1 rounded-full bg-black/70 backdrop-blur-md text-xs font-semibold text-amber-400 border border-amber-500/30">
+                            #11 Latest
+                        </span>
+                    </div>
+                    <div class="p-6 flex flex-col flex-grow justify-between">
+                        <div>
+                            <h3 class="font-fun text-xl font-bold mb-2">Mobi &amp; Torik — Newest Short</h3>
+                            <p class="text-zinc-400 text-sm mb-4">
+                                Watch the latest Mobi &amp; Torik widescreen film on YouTube!
+                            </p>
+                        </div>
+                        <div class="pt-4 border-t border-zinc-800 flex items-center justify-between">
+                            <span class="text-xs text-zinc-500 font-medium">Widescreen Film</span>
+                            <a href="https://www.youtube.com/watch?v=0eGWxoCnSSk" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 text-xs font-bold text-amber-400 hover:text-amber-300 transition">
+                                Watch Now <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
                 <!-- Video Item: Episode 10 -->
-                <div class="bg-zinc-900 rounded-3xl overflow-hidden border border-zinc-800 box-glow transition duration-300 group flex flex-col">
+                <div class="bg-zinc-900 rounded-3xl overflow-hidden border border-zinc-800 box-glow transition duration-300 group flex flex-col" data-film-format="shorts">
                     <div class="relative aspect-[9/16] bg-zinc-950 overflow-hidden flex items-center justify-center">
                         <img src="https://img.youtube.com/vi/d_iZqsozhWc/hqdefault.jpg" alt="Who Broke the TV? Granny Kiti’s Bootcamp" class="episode-still w-full h-full object-cover" onerror="this.src='https://placehold.co/480x854/131c2e/f59e0b?text=10th+Puppet+Drive'">
                         <div class="absolute inset-0 bg-black/40 group-hover:bg-black/20 transition duration-300 flex items-center justify-center">
@@ -366,7 +404,7 @@
                             </button>
                         </div>
                         <span class="absolute top-4 left-4 px-3 py-1 rounded-full bg-black/70 backdrop-blur-md text-xs font-semibold text-amber-400 border border-amber-500/30">
-                            #10 Latest
+                            #10 Episode
                         </span>
                     </div>
                     <div class="p-6 flex flex-col flex-grow justify-between">
@@ -386,7 +424,7 @@
                 </div>
 
                 <!-- Video Item: Episode 9 -->
-                <div class="bg-zinc-900 rounded-3xl overflow-hidden border border-zinc-800 box-glow transition duration-300 group flex flex-col">
+                <div class="bg-zinc-900 rounded-3xl overflow-hidden border border-zinc-800 box-glow transition duration-300 group flex flex-col" data-film-format="shorts">
                     <div class="relative aspect-[9/16] bg-zinc-950 overflow-hidden flex items-center justify-center">
                         <img src="https://img.youtube.com/vi/FlvAV0OtdUk/hqdefault.jpg" alt="Torik’s Having the Time of His Life!" class="episode-still w-full h-full object-cover" onerror="this.src='https://placehold.co/480x854/131c2e/f59e0b?text=10th+Puppet+Drive'">
                         <div class="absolute inset-0 bg-black/40 group-hover:bg-black/20 transition duration-300 flex items-center justify-center">
@@ -415,7 +453,7 @@
                 </div>
 
                 <!-- Video Item: Episode 8 -->
-                <div class="bg-zinc-900 rounded-3xl overflow-hidden border border-zinc-800 box-glow transition duration-300 group flex flex-col">
+                <div class="bg-zinc-900 rounded-3xl overflow-hidden border border-zinc-800 box-glow transition duration-300 group flex flex-col" data-film-format="shorts">
                     <div class="relative aspect-[9/16] bg-zinc-950 overflow-hidden flex items-center justify-center">
                         <img src="https://img.youtube.com/vi/AAnsHwKwjUM/hqdefault.jpg" alt="Mobi Takes Basketball WAY TOO FAR! 🏀💥😂" class="episode-still w-full h-full object-cover" onerror="this.src='https://placehold.co/480x854/131c2e/f59e0b?text=10th+Puppet+Drive'">
                         <div class="absolute inset-0 bg-black/40 group-hover:bg-black/20 transition duration-300 flex items-center justify-center">
@@ -444,7 +482,7 @@
                 </div>
 
                 <!-- Video Item: Episode 7 -->
-                <div class="bg-zinc-900 rounded-3xl overflow-hidden border border-zinc-800 box-glow transition duration-300 group flex flex-col">
+                <div class="bg-zinc-900 rounded-3xl overflow-hidden border border-zinc-800 box-glow transition duration-300 group flex flex-col" data-film-format="shorts">
                     <div class="relative aspect-[9/16] bg-zinc-950 overflow-hidden flex items-center justify-center">
                         <img src="https://img.youtube.com/vi/KVMHUYFKLHc/hqdefault.jpg" alt="Mobi’s WILD Rodeo! 🐂😂" class="episode-still w-full h-full object-cover" onerror="this.src='https://placehold.co/480x854/131c2e/f59e0b?text=10th+Puppet+Drive'">
                         <div class="absolute inset-0 bg-black/40 group-hover:bg-black/20 transition duration-300 flex items-center justify-center">
@@ -473,7 +511,7 @@
                 </div>
 
                 <!-- Video Item 1 -->
-                <div class="bg-zinc-900 rounded-3xl overflow-hidden border border-zinc-800 box-glow transition duration-300 group flex flex-col">
+                <div class="bg-zinc-900 rounded-3xl overflow-hidden border border-zinc-800 box-glow transition duration-300 group flex flex-col" data-film-format="shorts">
                     <div class="relative aspect-[9/16] bg-zinc-950 overflow-hidden flex items-center justify-center">
                         <img src="https://img.youtube.com/vi/3FEqH02On-4/hqdefault.jpg" alt="Movie Night Goes WRONG" class="episode-still w-full h-full object-cover" onerror="this.src='https://placehold.co/480x854/131c2e/f59e0b?text=10th+Puppet+Drive'">
                         <div class="absolute inset-0 bg-black/40 group-hover:bg-black/20 transition duration-300 flex items-center justify-center">
@@ -502,7 +540,7 @@
                 </div>
 
                 <!-- Video Item 2 -->
-                <div class="bg-zinc-900 rounded-3xl overflow-hidden border border-zinc-800 box-glow transition duration-300 group flex flex-col">
+                <div class="bg-zinc-900 rounded-3xl overflow-hidden border border-zinc-800 box-glow transition duration-300 group flex flex-col" data-film-format="shorts">
                     <div class="relative aspect-[9/16] bg-zinc-950 overflow-hidden flex items-center justify-center">
                         <img src="https://img.youtube.com/vi/g6V9OlX49XY/hqdefault.jpg" alt="EPIC Comeback & Dunk" class="episode-still w-full h-full object-cover" onerror="this.src='https://placehold.co/480x854/131c2e/f43f5e?text=10th+Puppet+Drive'">
                         <div class="absolute inset-0 bg-black/40 group-hover:bg-black/20 transition duration-300 flex items-center justify-center">
@@ -533,7 +571,7 @@
                 
 
                 <!-- Video Item 3 -->
-                <div class="bg-zinc-900 rounded-3xl overflow-hidden border border-zinc-800 box-glow transition duration-300 group flex flex-col">
+                <div class="bg-zinc-900 rounded-3xl overflow-hidden border border-zinc-800 box-glow transition duration-300 group flex flex-col" data-film-format="shorts">
                     <div class="relative aspect-[9/16] bg-zinc-950 overflow-hidden flex items-center justify-center">
                         <img src="https://img.youtube.com/vi/VJx7thEz6b4/hqdefault.jpg" alt="Rebound Fail" class="episode-still w-full h-full object-cover" onerror="this.src='https://placehold.co/480x854/131c2e/f59e0b?text=10th+Puppet+Drive'">
                         <div class="absolute inset-0 bg-black/40 group-hover:bg-black/20 transition duration-300 flex items-center justify-center">
@@ -563,7 +601,7 @@
 
 
                 <!-- Video Item 4: Episode 3 — THE BLOCK! -->
-                <div class="bg-zinc-900 rounded-3xl overflow-hidden border border-zinc-800 box-glow transition duration-300 group flex flex-col">
+                <div class="bg-zinc-900 rounded-3xl overflow-hidden border border-zinc-800 box-glow transition duration-300 group flex flex-col" data-film-format="shorts">
                     <div class="relative aspect-[9/16] bg-zinc-950 overflow-hidden flex items-center justify-center">
                         <img src="https://img.youtube.com/vi/bg9YTFIofn4/hqdefault.jpg" alt="THE BLOCK! — Episode 3 thumbnail" class="episode-still w-full h-full object-cover" onerror="this.src='https://placehold.co/480x854/131c2e/f59e0b?text=10th+Puppet+Drive'">
                         <div class="absolute inset-0 bg-black/40 group-hover:bg-black/20 transition duration-300 flex items-center justify-center">
@@ -585,7 +623,7 @@
                     </div>
                 </div>
                 <!-- Video Item 5 -->
-                <div class="bg-zinc-900 rounded-3xl overflow-hidden border border-zinc-800 box-glow transition duration-300 group flex flex-col">
+                <div class="bg-zinc-900 rounded-3xl overflow-hidden border border-zinc-800 box-glow transition duration-300 group flex flex-col" data-film-format="shorts">
                     <div class="relative aspect-[9/16] bg-zinc-950 overflow-hidden flex items-center justify-center">
                         <img src="https://img.youtube.com/vi/lEzBDR795cY/hqdefault.jpg" alt="The Magic Touch" class="episode-still w-full h-full object-cover" onerror="this.src='https://placehold.co/480x854/131c2e/f43f5e?text=10th+Puppet+Drive'">
                         <div class="absolute inset-0 bg-black/40 group-hover:bg-black/20 transition duration-300 flex items-center justify-center">
@@ -614,7 +652,7 @@
                 </div>
 
                 <!-- Video Item 6 -->
-                <div class="bg-zinc-900 rounded-3xl overflow-hidden border border-zinc-800 box-glow transition duration-300 group flex flex-col">
+                <div class="bg-zinc-900 rounded-3xl overflow-hidden border border-zinc-800 box-glow transition duration-300 group flex flex-col" data-film-format="shorts">
                     <div class="relative aspect-[9/16] bg-zinc-950 overflow-hidden flex items-center justify-center">
                         <img src="https://img.youtube.com/vi/kiNrWHjKJ9w/hqdefault.jpg" alt="Passing Gone Wrong" class="episode-still w-full h-full object-cover" onerror="this.src='https://placehold.co/480x854/131c2e/f59e0b?text=10th+Puppet+Drive'">
                         <div class="absolute inset-0 bg-black/40 group-hover:bg-black/20 transition duration-300 flex items-center justify-center">
@@ -648,9 +686,9 @@
 
     <!-- Film player overlay -->
     <div id="filmModal" class="modal-hidden fixed inset-0 z-[100] bg-black/90 p-4 flex items-center justify-center" role="dialog" aria-modal="true" aria-labelledby="filmModalTitle">
-      <div class="w-full max-w-[460px]">
+      <div id="tpd-film-player-shell" class="w-full max-w-[460px]">
         <div class="flex items-center justify-between mb-3"><h2 id="filmModalTitle" class="font-fun text-xl font-bold">Now Playing</h2><button id="closeFilm" type="button" aria-label="Close film" class="px-4 py-2 rounded-xl border border-zinc-600 hover:border-amber-400"><i class="fa-solid fa-xmark"></i> Close</button></div>
-        <div class="aspect-[9/16] max-h-[76vh] bg-black rounded-2xl overflow-hidden"><iframe id="filmFrame" title="Mobi and Torik film" class="w-full h-full" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></div>
+        <div id="tpd-film-player-aspect" class="aspect-[9/16] max-h-[76vh] bg-black rounded-2xl overflow-hidden"><iframe id="filmFrame" title="Mobi and Torik film" class="w-full h-full" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></div>
       </div>
     </div>
 
@@ -727,6 +765,15 @@
           lastFocus = button;
           const id = button.dataset.video;
           if (!/^[A-Za-z0-9_-]{11}$/.test(id)) return;
+          const wide = button.closest('[data-film-format]')?.dataset.filmFormat === 'widescreen';
+          const shell = document.getElementById('tpd-film-player-shell');
+          const aspect = document.getElementById('tpd-film-player-aspect');
+          if (shell && aspect) {
+            shell.classList.toggle('max-w-[460px]', !wide);
+            shell.classList.toggle('max-w-5xl', wide);
+            aspect.classList.toggle('aspect-[9/16]', !wide);
+            aspect.classList.toggle('aspect-video', wide);
+          }
           frame.src = 'https://www.youtube-nocookie.com/embed/' + encodeURIComponent(id) + '?autoplay=1&rel=0';
           modal.classList.remove('modal-hidden');
           document.body.style.overflow = 'hidden';
@@ -819,6 +866,51 @@
   } else {
     initialize();
   }
+})();
+</script>
+
+<script>
+/* Film format filter. Only hides/shows gallery cards; leaves all videos and links intact. */
+(() => {
+  'use strict';
+  const filters = document.getElementById('tpd-film-filters');
+  if (!filters) return;
+  const cards = Array.from(document.querySelectorAll('#episodes [data-film-format]'));
+  const labels = {
+    en: ['All Films','Shorts','Widescreen'],
+    'pt-br': ['Todos os Filmes','Shorts','Tela Ampla'],
+    es: ['Todas las Películas','Shorts','Pantalla Ancha'],
+    fr: ['Tous les Films','Shorts','Grand Écran'],
+    ko: ['전체 영상','쇼츠','와이드스크린'],
+    ja: ['すべての作品','ショート','ワイドスクリーン']
+  };
+  const categories = ['all','shorts','widescreen'];
+  let active = 'all';
+  function render() {
+    const lang = document.documentElement.lang.toLowerCase().replace('_','-');
+    const text = labels[lang] || labels[lang.split('-')[0]] || labels.en;
+    filters.querySelectorAll('[data-film-filter]').forEach(button => {
+      const selected = button.dataset.filmFilter === active;
+      button.textContent = text[categories.indexOf(button.dataset.filmFilter)];
+      button.setAttribute('aria-pressed',String(selected));
+      button.classList.toggle('bg-amber-500', selected);
+      button.classList.toggle('text-zinc-950', selected);
+      button.classList.toggle('border-amber-400', selected);
+      button.classList.toggle('bg-zinc-900', !selected);
+      button.classList.toggle('text-zinc-200', !selected);
+      button.classList.toggle('border-zinc-700', !selected);
+    });
+    cards.forEach(card => card.classList.toggle('tpd-filter-hidden',active !== 'all' && card.dataset.filmFormat !== active));
+    filters.setAttribute('aria-label', ({en:'Filter films by format','pt-br':'Filtrar filmes por formato',es:'Filtrar películas por formato',fr:'Filtrer les films par format',ko:'형식별 영상 필터',ja:'形式で作品を絞り込む'})[lang] || 'Filter films by format');
+  }
+  filters.addEventListener('click',e => {
+    const button = e.target.closest('[data-film-filter]');
+    if (!button) return;
+    active=button.dataset.filmFilter;
+    render();
+  });
+  new MutationObserver(render).observe(document.documentElement,{attributes:true,attributeFilter:['lang']});
+  render();
 })();
 </script>
 </body>
